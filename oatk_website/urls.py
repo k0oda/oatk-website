@@ -22,5 +22,7 @@ from oatk_website import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", views.index),
+    path("", views.index, name="index"),
+
+    path("about/news", views.news, name="news"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

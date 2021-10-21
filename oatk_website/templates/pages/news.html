@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<h1 class="text-center mb-5">Новости</h1>
+<div class="container mb-5">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for item in news %}
+      <div class="col">
+        <div class="card rounded-5">
+          <div class="row g-0">
+            <div class="col-md-4 my-auto">
+              <img src="{{ item.image.url }}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ item.title }}</h5>
+                <p class="card-text">{{ item.short_description }}</p>
+                <a href="#" class="btn btn-outline-dark bg-gradient">Подробнее</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="row mt-5">
+    <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link text-dark" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        {% for page in total_pages %}
+        <li class="page-item"><a class="page-link text-light {% if page == current_page %}bg-dark bg-gradient{% endif %}" href="#">{{ page }}</a></li>
+        {% endfor %}
+        <li class="page-item">
+          <a class="page-link text-dark text-gradient" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+{% endblock content %}
